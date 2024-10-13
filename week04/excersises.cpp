@@ -45,12 +45,12 @@ void print_stars(unsigned int count) {
 
 // Funkce vypíše obdélníček z hvězdiček
 void print_rectangle(unsigned int sirka, unsigned int vyska) {
-    for (int i = sirka; i <= sirka; i--){
+    for (int i = sirka; i < sirka; i--){
         std::cout << '*';
     }
     std::cout << '\n';
 
-    for (int i = vyska - 2; i <= vyska - 2; i--){
+    for (int i = vyska - 2; i < vyska - 2; i--){
         std::cout << '*';
         for (int o = (sirka - 2); o <= (sirka - 2); o--){
             std::cout << ' ';
@@ -73,7 +73,7 @@ void print_rectangle(unsigned int sirka, unsigned int vyska) {
 // ****
 void print_pyramid_l(unsigned int height) {
     int star = 1;
-    for (int i = height; i >= 0; i-- ){
+    for (int i = height; i > 0; i-- ){
         for (int s = star ; s >= 1; s--){
         std::cout << '*';
         }
@@ -90,7 +90,7 @@ void print_pyramid_l(unsigned int height) {
 void print_pyramid_r(unsigned int height) {
     int spaces = height - 1;
     int stars = 1;
-    for (int i = height; i >= 0; i-- ){
+    for (int i = height; i > 0; i-- ){
         for (int s = spaces; s >= 0; s-- ){
             std::cout << ' ';
         }
@@ -111,7 +111,7 @@ void print_pyramid_r(unsigned int height) {
 void print_pyramid(unsigned int height) {
         int spaces = height - 1;
     int stars = 1;
-    for (int i = height; i >= 0; i-- ){
+    for (int i = height; i > 0; i-- ){
         for (int s = spaces; s >= 0; s-- ){
             std::cout << ' ';
         }
@@ -130,6 +130,19 @@ void print_pyramid(unsigned int height) {
 //   ***
 //    *
 void print_pyramid_inverse(unsigned int height) {
+    int spaces = 0;
+    int stars = height* 2 - 1;
+    for (int i = height; i > 0; i-- ){
+        for (int s = spaces; s >= 0; s-- ){
+            std::cout << ' ';
+        }
+        spaces++;
+        for (int r = stars; r >= 1; r-- ){
+            std::cout << '*';
+        }
+        stars = stars - 2;
+        std::cout << '\n';
+    }
 }
 
 int main() {
