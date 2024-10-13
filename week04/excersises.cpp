@@ -109,6 +109,19 @@ void print_pyramid_r(unsigned int height) {
 //  *****
 // *******
 void print_pyramid(unsigned int height) {
+        int spaces = height - 1;
+    int stars = 1;
+    for (int i = height; i >= 0; i-- ){
+        for (int s = spaces; s >= 0; s-- ){
+            std::cout << ' ';
+        }
+        spaces--;
+        for (int r = stars; r >= 1; r-- ){
+            std::cout << '*';
+        }
+        stars = stars + 2;
+        std::cout << '\n';
+    }
 }
 
 // Funkce vypíše takovýto trojúhelník o zadané výšce
