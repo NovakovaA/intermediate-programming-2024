@@ -143,6 +143,7 @@ void print_pyramid_inverse(unsigned int height) {
         stars = stars - 2;
         std::cout << '\n';
     }
+    std::cout << '\n';
 }
 
 int main() {
