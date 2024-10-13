@@ -49,7 +49,6 @@ void print_rectangle(unsigned int sirka, unsigned int vyska) {
         std::cout << '*';
     }
     std::cout << '\n';
-
     for (int i = vyska - 2; i < vyska - 2; i--){
         std::cout << '*';
         for (int o = (sirka - 2); o <= (sirka - 2); o--){
@@ -62,6 +61,7 @@ void print_rectangle(unsigned int sirka, unsigned int vyska) {
     for (int i = sirka; i <= sirka; i--){
         std::cout << '*';
     }
+    
     std::cout << '\n';
 }
 
