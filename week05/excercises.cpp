@@ -4,6 +4,10 @@
 // Vypište obdélník o zadaných parametrech
 // Vraťte 0 pokud vše v pořádku, -1 pokud nastala chyba
 int hollow_rect(int x, int y, int thickness) {
+    if(x < 0 || y < 0 || thickness >= x + 1 || thickness >= y + 1 || thickness < 0){
+        return -1;
+    }
+
     for(int i = 0; i < y; i++){
         if(i < thickness || i >= y - thickness){
             for(int h = 0; h < x; h++){
@@ -29,7 +33,7 @@ int hollow_rect(int x, int y, int thickness) {
         }
     }
     }
-    return -1;
+    return 0;
 
 }
 
