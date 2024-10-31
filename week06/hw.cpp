@@ -1,4 +1,5 @@
 #include <cassert>
+#include <iostream>
 // TODO: doplťe co potřebujete
 
 
