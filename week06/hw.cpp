@@ -1,5 +1,6 @@
 #include <cassert>
 #include <iostream>
+#include <cmath>
 // TODO: doplťe co potřebujete
 
 
@@ -15,12 +16,38 @@
 // + 2 = 1234⟧.  Proto ‹power_digit_sum(1234)› získáme jako ⟦3¹ + 4²
 // + 1³ + 2⁴ = 36⟧.
 
+int power_digit_sum(int number){
+    int digits = 0;
+    if(number == 0){
+        std::cout << '0';
+        return 0;
+    }
+    
+    int new_number;
+    while(number >= 1){
+        new_number = number / 10;
+        digits++;
+    }
+    std::cout << digits << '\n';
+
+    int single_number;
+    int sum = 0;
+    for(int i = 0; i < digits; i++){
+        single_number = floor(new_number);
+        sum = sum + pow(single_number, digits - 1);
+        digits--;
+        new_number = new_number * 10;
+
+    }
+    std::cout << sum;
+    return 0;
+}
 
 
 // Napište funkci, která najde celé číslo ‹x›, které leží mezi
 // hodnotami ‹low› a ‹high› (včetně), a pro které vrátí funkce ‹poly›
 // maximální hodnotu (tzn. libovolné ⟦x⟧ takové, že pro všechny ⟦x'⟧
-// platí ⟦f(x) ≥ f(x')⟧, kde ⟦f⟧ je funkce, kterou počítá podprogram
+// platí ⟦f(x) ≥ f(x')⟧, kde ⟦f⟧ je funke, kterou počítá podprogram
 // ‹poly›).
 
 int poly(int x) {
@@ -60,4 +87,8 @@ int first_day(int year) {
     int years = year - 1601;
     int offset = years + years / 4 - years / 100 + years / 400;
     return offset % 7;
+}
+
+int main(){
+    power_digit_sum(1234);
 }
