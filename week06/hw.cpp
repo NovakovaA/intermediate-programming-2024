@@ -29,17 +29,18 @@ int power_digit_sum(int number){
         digits++;
     }
     std::cout << digits << '\n';
+    std::cout << new_number << '\n';
 
-    int single_number;
-    int sum = 0;
-    for(int i = 0; i < digits; i++){
-        single_number = floor(new_number);
-        sum = sum + pow(single_number, digits - 1);
-        digits--;
-        new_number = new_number * 10;
+    //int single_number;
+    //int sum = 0;
+    //for(int i = 0; i < digits; i++){
+    //    single_number = floor(new_number);
+    //    sum = sum + pow(single_number, digits - 1);
+    //    digits--;
+    //    new_number = new_number * 10;
 
-    }
-    std::cout << sum;
+    //}
+    //std::cout << sum;
     return 0;
 }
 
