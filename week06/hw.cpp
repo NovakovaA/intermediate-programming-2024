@@ -18,28 +18,44 @@
 
 int power_digit_sum(int number){
     int digits = 0;
-    if(number == 0){
-        std::cout << '0';
-        return 0;
+    int number7 = 0;
+    int remainder;
+    int times = 0;
+    while (number > 0){
+        remainder = number % 7;
+        number = number /7;
+        //std::cout << remainder <<'\n';
+        number7 = number7 +  remainder * pow(10, times);
+        times++;
     }
     
-    int new_number;
-    while(number >= 1){
-        new_number = number / 10;
+    std::cout << number7 << '\n';
+
+    float new_number = number7;
+    while(number7 >= 1){
+        number7 = number7 / 10;
         digits++;
+        new_number = new_number / 10;
+        //std::cout << new_number << '\n';
     }
-    std::cout << digits << '\n';
+    //std::cout << digits << '\n';
+    //std::cout << new_number << '\n';
 
     int single_number;
     int sum = 0;
+    int power = 1;
+    int gone = 0;
     for(int i = 0; i < digits; i++){
-        single_number = floor(new_number);
-        sum = sum + pow(single_number, digits - 1);
-        digits--;
         new_number = new_number * 10;
-
+        single_number = floor(new_number);
+        int normal_num = single_number - gone *10;
+        //std::cout << normal_num << '\n';
+        sum = sum + pow(normal_num, power);
+        power++;
+        gone = single_number;
     }
-    std::cout << sum;
+
+    std::cout << sum << " Here" << '\n';
     return 0;
 }
 
