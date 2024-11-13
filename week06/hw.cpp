@@ -99,19 +99,19 @@ int function(int low, int high){
 //
 // │  datum │ svátek                                         │
 // ├┄┄┄┄┄┄┄▻┼◅┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄│
-// │   1.1. │ Den obnovy samostatného českého státu          │
+// │   1.1. │ Den obnovy samostatného českého státu          │ day 1
 // │      — │ Velký pátek                                    │
 // │      — │ Velikonoční pondělí                            │
-// │   1.5. │ Svátek práce                                   │
-// │   8.5. │ Den vítězství                                  │
-// │   5.7. │ Den slovanských věrozvěstů Cyrila a Metoděje   │
-// │   6.7. │ Den upálení mistra Jana Husa                   │
-// │  28.9. │ Den české státnosti                            │
-// │ 28.10. │ Den vzniku samostatného československého státu │
-// │ 17.11. │ Den boje za svobodu a demokracii               │
-// │ 24.12. │ Štědrý den                                     │
-// │ 25.12. │ 1. svátek vánoční                              │
-// │ 26.12. │ 2. svátek vánoční                              │
+// │   1.5. │ Svátek práce                                   │ day 121/122
+// │   8.5. │ Den vítězství                                  │ day 128/129
+// │   5.7. │ Den slovanských věrozvěstů Cyrila a Metoděje   │ day 186/187
+// │   6.7. │ Den upálení mistra Jana Husa                   │ day 187/188
+// │  28.9. │ Den české státnosti                            │ day 271/272
+// │ 28.10. │ Den vzniku samostatného československého státu │ day 301/302
+// │ 17.11. │ Den boje za svobodu a demokracii               │ day 321/322
+// │ 24.12. │ Štědrý den                                     │ day 358/359
+// │ 25.12. │ 1. svátek vánoční                              │ day 359/360
+// │ 26.12. │ 2. svátek vánoční                              │ day 360/361
 // Přestupné roky: v některých letech se na konec února přidává 29.
 // den. Jsou to roky, které jsou dělitelné čtyřmi, s výjimkou těch,
 // které jsou zároveň dělitelné 100 a nedělitelné 400.
@@ -119,15 +119,60 @@ int function(int low, int high){
 // na který den v týdnu padne 1. leden daného roku. Např.
 // ‹first_day(2001)› vrátí nulu, protože rok 2001 začínal pondělím.
 
+
+/* 0 Monday 1 Tuesday 2 Wednesday 3 Thursday 4 Friday 5 Saturday 6 Sunday*/
 int first_day(int year) {
     assert(year >= 1601);
     int years = year - 1601;
     int offset = years + years / 4 - years / 100 + years / 400;
+    //std::cout << offset % 7;
     return offset % 7;
 }
 
+int days_in_a_year(int year){
+    int days = 365 - 2;
+    int current_day = first_day(year);
+    std::cout << first_day << "\n";
 
+    if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0){
+        days++;
 
+        for(int i = 1; i <= 366; i++){
+            current_day++;
+            if(current_day > 6){
+                current_day = 0;
+            }
+            if(current_day == 5 || current_day == 6){
+                days--;
+            }
+            if(current_day != 5 && current_day != 6){
+                if(i == 1 || i == 122 || i == 129 || i == 187 || i == 188 || i == 272 || i == 302 || i == 322 || i == 359 || i == 360 || i == 361){
+                    days--;
+                }
+            }
+        }
+    }
+
+    else{
+        for(int i = 1; i <= 365; i++){
+            current_day++;
+            if(current_day > 6){
+                current_day = 0;
+            }
+            if(current_day == 5 || current_day == 6){
+                days--;
+            }
+            if(current_day != 5 && current_day != 6){
+                if(i == 1 || i == 121 || i == 128 || i == 186 || i == 187 || i == 271 || i == 301 || i == 321 || i == 358 || i == 359 || i == 360){
+                    days--;
+                }
+            }
+        }
+    }
+    
+    std::cout << days << "\n";
+    return days;
+}
 
 
 
@@ -135,5 +180,7 @@ int first_day(int year) {
 
 int main(){
     power_digit_sum(1234);
-    function(-1, 3);
+    function(-1, 4);
+    days_in_a_year(2024);
+
 }
