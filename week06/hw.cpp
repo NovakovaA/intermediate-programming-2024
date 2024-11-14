@@ -83,7 +83,7 @@ int function(int low, int high){
             maxx = i;
             f = fnew;
         }
-
+        
     }
     
     std::cout << maxx << '\n';
@@ -132,7 +132,7 @@ int first_day(int year) {
 int days_in_a_year(int year){
     int days = 365 - 2;
     int current_day = first_day(year);
-    std::cout << first_day << "\n";
+    std::cout << first_day(year) << "\n";
 
     if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0){
         days++;
@@ -179,8 +179,10 @@ int days_in_a_year(int year){
 
 
 int main(){
+    int year = 2021;
     power_digit_sum(1234);
     function(-1, 4);
-    days_in_a_year(2024);
+    first_day(year);
+    days_in_a_year(year);
 
 }
