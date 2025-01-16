@@ -21,14 +21,38 @@ void print(std::vector<int> data) {
  * vzestupně seřazeného seznamu
  * */
 std::vector<int> merge(std::vector<int> a, std::vector<int> b) {
-    return {};
+    int av = 0;
+    int bv = 0;
+    std::vector<int> vector;
+    int size = a.size() + b.size();
+    for(int i = 0; i < size ; i++){
+        if(a[av] <= b[bv]){
+            vector.push_back(b[bv]);
+            bv++;
+        } else {
+            vector.push_back(a[av]);
+            av++;
+        }
+    }
+    return vector;
 }
 
 /* Napište funkci histogram, která dostane pole čísel z rozsahu [0-100), a vrátí nové pole takové, že
- * na i-té pozici nového seznamu bude uložen počet výskytů čísla i ve vstupním poli.
- */
+* na i-té pozici nového seznamu bude uložen počet výskytů čísla i ve vstupním poli.
+*/
 std::vector<int> histogram(std::vector<int> data) {
-    return {};
+    std::vector<int> vector;
+    int count = 0;
+    for(std::size_t i = 0; i < data.size(); i++){
+        for(std::size_t find = 0; find < data.size(); i++){
+            int idk = i;
+            if (vector[find] == idk){
+                count++;
+            }
+        }
+        vector.push_back(count);
+    }
+    return vector;
 }
 
 // Napište (čistou) funkci, která simuluje jeden krok výpočtu
