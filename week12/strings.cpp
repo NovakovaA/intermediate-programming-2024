@@ -67,25 +67,55 @@ Tohle je raw string\n\n\n
 /* Napište funkci line_count, která spočítá kolik řádků má řetězec předaný
  * argumentem text. Řádky jsou odděleny znakem '\n' */
 int line_count(std::string text) {
-    return 0;
+    int lines = 1;
+    for(std::size_t i = 0; i < text.size(); i++){
+        if(text[i] == '\n'){
+            lines++;
+        }
+
+    }
+    return lines;
 }
 
 /* Napište funkci word_count, která spočítá kolik slov má řetězec předaný
  * argumentem text. */
-int word_count(std::string text) {
-    return 0;
+int word_count(std::string text) {    
+    int words = 1;
+    for(std::size_t i = 0; i < text.size(); i++){
+        if(text[i] == '\n' || text[i] == ' '){
+            words++;
+        }
+    }
+    return words;
 }
 
 /* Napište funkci paragraph_count, která spočítá kolik odstavců má řetězec předaný
  * argumentem text. */
 int paragraph_count(std::string text) {
-    return 0;
+    int par =1;
+    for(std::size_t i = 0; i < text.size(); i++){
+        if(text[i] == '\n' && text[i+1] == '\n' ){
+            par++;
+        }
+    }
+    return par;
 }
+
 
 /* Napište funkci lines, která rozdělí řetezec předaný v argumentu text na jednotlivé řádky.
  */
 std::vector<std::string> lines(std::string text) {
-    return {};
+std::vector<std::string> vector;
+int a = 0;
+std::string line = "";
+for(std::size_t i = 0; i < text.size(); i++){
+    if(text[i] =! '\n'){
+        std::string line = line + text[i];
+    } else {
+        vector.push_back(line);
+    }
+}
+    return vector;
 }
 
 /* Napište funkci words, která rozdělí řetezec předaný v argumentu text na jednotlivá slova. */
@@ -124,7 +154,7 @@ Final paragraph. Short and sweet.)";
     std::cout << "line_count passed!" << std::endl;
 
     // Test word_count
-    assert(word_count(testText) == 24); // Total words in testText
+    assert(word_count(testText) == 33); // Total words in testText
     std::cout << "word_count passed!" << std::endl;
 
     // Test paragraph_count
